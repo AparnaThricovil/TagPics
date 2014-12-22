@@ -55,7 +55,6 @@ public class GalleryActivity extends Activity implements ImageResultListener {
 		private ImageView imgView;
 		private GridView gridView;
 		private GridViewAdapter customGridAdapter;
-		//private MyRecyclerAdapter customRecycleAdapter;
 		private ImageService imageService;
 	    private boolean          bound;
 	    private boolean          computationPending = false;
@@ -260,32 +259,7 @@ public class GalleryActivity extends Activity implements ImageResultListener {
        }
    	@Override
    	public void imageAvailable(final ArrayList<ImageItem> images,int option){
-   		/*if the selected option was to delete tag, then we need to return to 
-   		 * the listing of tags view. The exif data of the image is set to "na"
-   		 */
-   		/*if(option==2){
-   			
-   			for (ImageItem item : images){
-   			ExifInterface exif;
-   			
-   			try {
-   				
-   				exif = new ExifInterface(item.getFileName());
-   				exif.setAttribute("UserComment","na");
-   				exif.saveAttributes();
-   		
-   			} catch (IOException e) {
-   			// TODO Auto-generated catch block
-   			e.printStackTrace();
-   			}
-   			}
-   			db.deleteTag(tag);
-   			Intent intentList = new Intent(this, TagActivity.class);
-   	    	startActivity(intentList);
-   		}*/
-   		/*
-   		 * When the service returns update the gridview.
-   		 */
+
    		gridView.post(new Runnable() {
 
    	            @Override
@@ -304,6 +278,5 @@ public class GalleryActivity extends Activity implements ImageResultListener {
    	            }
    	        });
    	}
-   	
-   	//public void onDestroy()
+   
 }

@@ -1,6 +1,6 @@
 /**
  * 
- * @author Aparna 
+ * Followed tutorial for the Navigation Drawer Fragment 
  * 
  */
 package org.example.tagproject;
@@ -53,13 +53,13 @@ public class AddImagetoTagsActivity extends Activity implements ImageResultListe
 	 * Fragment managing the behaviors, interactions and presentation of the
 	 * navigation drawer.
 	 */
-	private NavigationDrawerFragment mNavigationDrawerFragment;
+	private NavigationDrawerFragment navigationDrawerFragment;
 
 	/**
 	 * Used to store the last screen title. For use in
 	 * {@link #restoreActionBar()}.
 	 */
-	private CharSequence mTitle;
+	private CharSequence title;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -71,14 +71,13 @@ public class AddImagetoTagsActivity extends Activity implements ImageResultListe
 		this.setTitle(tag+" "+"images");
 		gridView = (GridView) findViewById(R.id.gridView);
 		
-		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager()
+		navigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager()
 				.findFragmentById(R.id.navigation_drawer);
-		mTitle = getTitle();
+		title = getTitle();
 
 		// Set up the drawer.
-		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
+		navigationDrawerFragment.setUp(R.id.navigation_drawer,
 				(DrawerLayout) findViewById(R.id.drawer_layout));
-		//Log.v("Addimage", "tag is"+tag);
 		bindToImageService();
 		callImageService();
 	}
@@ -92,7 +91,7 @@ public class AddImagetoTagsActivity extends Activity implements ImageResultListe
 	         * onServiceConnected will be called whenever the connection to a
 	         * service has been established. The parameters are the class name of
 	         * the service and a reference to the IBinder interface. The latter can
-	         * be used to retrieve the FibonacciService instance.
+	         * be used to retrieve the ImageService instance.
 	         */
 	        @Override
 	        public void onServiceConnected(ComponentName className, IBinder service) {
@@ -266,7 +265,7 @@ public class AddImagetoTagsActivity extends Activity implements ImageResultListe
             /*
              * When the activity gets destroyed, we also unbind from the
              * service. Since this activity is the only client to bind to
-             * FibonacciService, the service will be destroyed as well.
+             * ImageService, the service will be destroyed as well.
              */
             unbindService(connection);
             bound = false;
@@ -334,19 +333,19 @@ public class AddImagetoTagsActivity extends Activity implements ImageResultListe
 	public void onSectionAttached(int number) {
 		switch (number) {
 		case 1:
-			mTitle = getString(R.string.title_section1);
+			title = getString(R.string.title_section1);
 			break;
 		case 2:
-			mTitle = getString(R.string.title_section2);
+			title = getString(R.string.title_section2);
 			break;
 		case 3:
-			mTitle = getString(R.string.title_section3);
+			title = getString(R.string.title_section3);
 			break;
 		case 4:
-			mTitle = getString(R.string.title_section4);
+			title = getString(R.string.title_section4);
 			break;
 		case 5:
-			mTitle = getString(R.string.title_section5);
+			title = getString(R.string.title_section5);
 			break;
 		}
 	}
@@ -355,34 +354,14 @@ public class AddImagetoTagsActivity extends Activity implements ImageResultListe
 		ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 		actionBar.setDisplayShowTitleEnabled(true);
-		actionBar.setTitle(mTitle);
+		actionBar.setTitle(title);
 		Log.v("AITT","RESTORE ACTION BAR");
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		/*if (!mNavigationDrawerFragment.isDrawerOpen()) {
-			// Only show items in the action bar relevant to this screen
-			// if the drawer is not showing. Otherwise, let the drawer
-			// decide what to show in the action bar.
-			getMenuInflater().inflate(R.menu.list, menu);
-			restoreActionBar();
-			return true;
-		}*/
 		return super.onCreateOptionsMenu(menu);
 	}
-
-	/*@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		//int id = item.getItemId();
-		//if (id == R.id.action_settings) {
-			//return true;
-	//	}
-		return super.onOptionsItemSelected(item);
-	}*/
 
 	/**
 	 * A placeholder fragment containing a simple view.
@@ -423,8 +402,8 @@ public class AddImagetoTagsActivity extends Activity implements ImageResultListe
 		public void onAttach(Activity activity) {
 			super.onAttach(activity);
 			Log.v("AITT","onAttach");
-			((AddImagetoTagsActivity) activity).onSectionAttached(getArguments().getInt(
-					ARG_SECTION_NUMBER));
+			//((AddImagetoTagsActivity) activity).onSectionAttached(getArguments().getInt(
+					//ARG_SECTION_NUMBER));
 		}
 	}	
 }

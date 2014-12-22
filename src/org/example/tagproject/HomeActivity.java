@@ -35,7 +35,6 @@ public class HomeActivity extends FragmentActivity {
 	ImageView imgView; 
 	String tag;
 	String imagePath=null;
-	//private FragmentTabHost mTabHost;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +56,6 @@ public class HomeActivity extends FragmentActivity {
 			
 			if (cursor.getCount()>0) {
 				
-				//Log.v("Home", "cursor not null");
 				int columnIndex1 = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
 				//Log.v("Home", "after data");
 				/*
@@ -85,8 +83,6 @@ public class HomeActivity extends FragmentActivity {
 				imgView.setImageBitmap(myBitmap);
 	    	}
 			else {
-				
-				//imgView = (ImageView) findViewById(R.id.imageView1);
 				imgView.setImageResource(R.drawable.noimage);
 			}
 		}

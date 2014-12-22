@@ -1646,29 +1646,27 @@ containing a value of this type.
         public static final int activity_gallery=0x7f03001b;
         public static final int activity_home=0x7f03001c;
         public static final int activity_images_tag=0x7f03001d;
-        public static final int activity_main=0x7f03001e;
-        public static final int activity_map=0x7f03001f;
-        public static final int activity_tag=0x7f030020;
-        public static final int fragment_list=0x7f030021;
-        public static final int fragment_navigation_drawer=0x7f030022;
-        public static final int image_on_map=0x7f030023;
-        public static final int layout_fullscreen_image=0x7f030024;
-        public static final int list_row=0x7f030025;
-        public static final int no_image=0x7f030026;
-        public static final int row_grid=0x7f030027;
-        public static final int support_simple_spinner_dropdown_item=0x7f030028;
+        public static final int activity_map=0x7f03001e;
+        public static final int activity_tag=0x7f03001f;
+        public static final int fragment_list=0x7f030020;
+        public static final int fragment_navigation_drawer=0x7f030021;
+        public static final int image_on_map=0x7f030022;
+        public static final int layout_fullscreen_image=0x7f030023;
+        public static final int list_row=0x7f030024;
+        public static final int no_image=0x7f030025;
+        public static final int row_grid=0x7f030026;
+        public static final int support_simple_spinner_dropdown_item=0x7f030027;
     }
     public static final class menu {
         public static final int add_imageto_tags=0x7f0c0000;
-        public static final int all_imagesfrom_gallery=0x7f0c0001;
-        public static final int camera=0x7f0c0002;
-        public static final int gallery=0x7f0c0003;
-        public static final int global=0x7f0c0004;
-        public static final int home=0x7f0c0005;
-        public static final int images_tag=0x7f0c0006;
-        public static final int list=0x7f0c0007;
-        public static final int map=0x7f0c0008;
-        public static final int tag=0x7f0c0009;
+        public static final int camera=0x7f0c0001;
+        public static final int gallery=0x7f0c0002;
+        public static final int global=0x7f0c0003;
+        public static final int home=0x7f0c0004;
+        public static final int images_tag=0x7f0c0005;
+        public static final int list=0x7f0c0006;
+        public static final int map=0x7f0c0007;
+        public static final int tag=0x7f0c0008;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 

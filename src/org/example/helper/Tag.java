@@ -12,8 +12,6 @@ public class Tag {
 	
 	public Tag() {
 		super();
-		//this.tagId = tagId;
-		//this.tagName = tagName;
 	}
 	
 	public int getTagId() {

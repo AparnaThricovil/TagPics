@@ -1,3 +1,6 @@
+/*
+ * Class for helping with the grid view of images
+ */
 package org.example.helper;
 
 public class GridImages {

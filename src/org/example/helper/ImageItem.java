@@ -1,7 +1,5 @@
-/**
- * 
- * Code for reference taken from : javatechig {@link http://javatechig.com}
- * 
+/*
+ * Class to hold the image information
  */
 package org.example.helper;
 

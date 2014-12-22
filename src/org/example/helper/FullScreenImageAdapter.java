@@ -1,7 +1,5 @@
 package org.example.helper;
- 
-//import org.example.helper.R;
- 
+  
 import java.util.ArrayList;
  
 
@@ -32,7 +30,9 @@ public class FullScreenImageAdapter extends PagerAdapter {
         this.activity = activity;
         this.imagePaths = imagePaths;
     }
- 
+    /*
+     * Number of images to be loaded
+     */
     @Override
     public int getCount() {
         return this.imagePaths.size();
@@ -45,8 +45,6 @@ public class FullScreenImageAdapter extends PagerAdapter {
      
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-    	//bitmap.recycle();
-    	//bitmap = null;
     	System.gc();
         ImageView imgDisplay;
         Button btnClose;
@@ -57,23 +55,34 @@ public class FullScreenImageAdapter extends PagerAdapter {
                 false);
   
         imgDisplay = (ImageView) viewLayout.findViewById(R.id.imgDisplay);
+        /*
+         * Attached to every image is a close button to close the 
+         * preview of the image and to return back to the activity
+         */
         btnClose = (Button) viewLayout.findViewById(R.id.btnClose);
-         
+         /*
+          * The inSampleSize is used to load large number of images by 
+          * scaling it down.It tells the decoder to subsample the 
+          * image, loading a smaller version into memory, by setting 
+          * inSampleSize to a value in the BitmapFactory.Options object
+          */
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inPreferredConfig = Bitmap.Config.ARGB_8888;
         options.inSampleSize = 8;
         bitmap = BitmapFactory.decodeFile(imagePaths.get(position), options);
         imgDisplay.setImageBitmap(bitmap);
-         
-        // close button click event
+         /*
+          * When the "X" button is clicked the image view is terminated 
+          * and all the bitmaps are recycled to save memory.
+          */
         btnClose.setOnClickListener(new View.OnClickListener() {           
             @Override
             public void onClick(View v) {
             	recycleBitmap();
-            	//bitmap.recycle();
-                //bitmap = null;
-                //System.gc();
-            	
+            	/*
+            	 * The activity is finished and hence the user would 
+            	 * be taken back to the list of images screen
+            	 */
                 activity.finish();
             }
         });

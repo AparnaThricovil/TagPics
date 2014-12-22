@@ -29,6 +29,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class ImagesTagActivity extends Activity implements ImageResultListener {
@@ -85,9 +86,7 @@ public class ImagesTagActivity extends Activity implements ImageResultListener {
 			return true;
 			
 		case R.id.saveImage:
-			imageService.getImages(tag,4);
-			//Intent intent = new Intent(this, TagActivity.class);
-	    	//startActivity(intentList);			
+			imageService.getImages(tag,4);		
 			return true;
 
 		default:
@@ -211,6 +210,7 @@ public class ImagesTagActivity extends Activity implements ImageResultListener {
 	@Override
 	public void imageAvailable(final ArrayList<ImageItem> images, int option){
 		if(option==4){
+			
 	            	for (ImageItem s : images) {
 	            		for (String allImages : imageNames){
 	            		if(s.getFileName().equalsIgnoreCase(allImages)){

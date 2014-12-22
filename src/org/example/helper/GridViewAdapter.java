@@ -1,6 +1,6 @@
 /**
  * 
- * Code for reference taken from : javatechig {@link http://javatechig.com}
+ * Code for reference  from : javatechig {@link http://javatechig.com}
  * 
  */
 package org.example.helper;
@@ -15,10 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.Toast;
 import android.view.View.OnClickListener;
 
-import org.example.tagproject.AddImagetoTagsActivity;
 import org.example.tagproject.FullScreenViewActivity;
 import org.example.tagproject.R;
 
@@ -34,7 +32,9 @@ public class GridViewAdapter extends ArrayAdapter<ImageItem> {
 		this.context = context;
 		this.data = data;
 	}
-	
+	/*
+	 * Getting all the images marked by a particular tag
+	 */
 	public ArrayList<String> getallFilePaths(ArrayList<ImageItem> data){
 		
 		for(ImageItem images : data){
@@ -67,15 +67,15 @@ public class GridViewAdapter extends ArrayAdapter<ImageItem> {
 
 		ImageItem item = (ImageItem) data.get(position);
 		holder.image.setImageBitmap(item.getImage());
-		//final int rowId = row.getId();
 		row.setOnClickListener(new OnClickListener() {
-
+			/*
+			 * The on click of the image calls FullScreenViewActivity 
+			 * class via an Intent and passes all the images so as 
+			 * to be displayed for the full screen view which can 
+			 * be swiped from right to left and left to right
+			 */
 	        public void onClick(View v) {
-	            // TODO Auto-generated method stub
-	            //Toast.makeText(context, "Clicked" + pos + "!!",
-	                   // Toast.LENGTH_SHORT).show();
 	            Intent i = new Intent(context,FullScreenViewActivity.class);
-	           // i.putExtra("data", getallFilePaths(data));
 	            i.putStringArrayListExtra("data", getallFilePaths(data));
 	            i.putExtra("position", pos);
 	            context.startActivity(i);

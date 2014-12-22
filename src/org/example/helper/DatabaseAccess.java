@@ -32,7 +32,6 @@ public class DatabaseAccess extends SQLiteOpenHelper {
             + "(" + TAG_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + TAG_NAME + " TEXT "+ ")";
     
     //Checking if TAG table exists
-    //private static final String TABLE_TAG_IF_EXISTS = "SELECT * FROM SQLITE_MASTER WHERE TYPE='TABLE' AND NAME='TABLE_TAGS'; ";
     
     public DatabaseAccess(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -102,7 +101,6 @@ public class DatabaseAccess extends SQLiteOpenHelper {
     	    	SQLiteDatabase db = this.getWritableDatabase();
     	        db.delete(TABLE_TAGS,TAG_ID + "=" + newTag.getTagId(), null);
     	        closeDB();
-    	        //DATABASE_TABLE, KEY_NAME + "=" + name, null
     		}
     	}
     }

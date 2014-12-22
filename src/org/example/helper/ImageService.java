@@ -129,11 +129,7 @@ public class ImageService extends Service {
         						 * "UserComment" is the tag used in my application to enter tag details of images.
         						 */
         						exif.getAttribute("UserComment");
-        						String imageTag = exif.getAttribute("UserComment");
-        						Log.v("***********","imagetag is"+imageTag);
-        						Log.v("***********","tag is"+tag);
-        						Log.v("***********","option is"+option);
-        						
+        						String imageTag = exif.getAttribute("UserComment");		
         						
         						//Case where images mapped under a tag is displayed(displaying images under tags)
         						if((tag.equalsIgnoreCase(imageTag) && option ==1) ||
@@ -227,7 +223,7 @@ public class ImageService extends Service {
 	        /*
 	         * Get the new message.
 	         */
-	    	//Log.v("ImageService", "in getImages"+tagvalue);
+	    
 	        Message msg = serviceHandler.obtainMessage();
 	        /*
 	         * Get the tagvalue and option and pass it into the 

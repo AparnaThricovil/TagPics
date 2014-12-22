@@ -7,38 +7,38 @@ public class MapActivityHelper {
 	private boolean valid = false;
 	Float latitude, longitude;
 	public MapActivityHelper(ExifInterface exif){
-	 String attrLATITUDE = exif.getAttribute(ExifInterface.TAG_GPS_LATITUDE);
-	 String attrLATITUDE_REF = exif.getAttribute(ExifInterface.TAG_GPS_LATITUDE_REF);
-	 String attrLONGITUDE = exif.getAttribute(ExifInterface.TAG_GPS_LONGITUDE);
-	 String attrLONGITUDE_REF = exif.getAttribute(ExifInterface.TAG_GPS_LONGITUDE_REF);
+	 String exifLatitude = exif.getAttribute(ExifInterface.TAG_GPS_LATITUDE);
+	 String exiflatitude_Ref = exif.getAttribute(ExifInterface.TAG_GPS_LATITUDE_REF);
+	 String exifLongitude = exif.getAttribute(ExifInterface.TAG_GPS_LONGITUDE);
+	 String exifLongitude_Ref = exif.getAttribute(ExifInterface.TAG_GPS_LONGITUDE_REF);
 
-	 if((attrLATITUDE !=null)
-	   && (attrLATITUDE_REF !=null)
-	   && (attrLONGITUDE != null)
-	   && (attrLONGITUDE_REF !=null))
+	 if((exifLatitude !=null)
+	   && (exiflatitude_Ref !=null)
+	   && (exifLongitude != null)
+	   && (exifLongitude_Ref !=null))
 	 {
 	  valid = true;
 	 
-	  if(attrLATITUDE_REF.equals("N")){
-	   latitude = convertToDegree(attrLATITUDE);
+	  if(exiflatitude_Ref.equals("N")){
+	   latitude = convertToDegree(exifLatitude);
 	  }
 	  else{
-	   latitude = 0 - convertToDegree(attrLATITUDE);
+	   latitude = 0 - convertToDegree(exifLatitude);
 	  }
 	 
-	  if(attrLONGITUDE_REF.equals("E")){
-	   longitude = convertToDegree(attrLONGITUDE);
+	  if(exifLongitude_Ref.equals("E")){
+	   longitude = convertToDegree(exifLongitude);
 	  }
 	  else{
-	   longitude = 0 - convertToDegree(attrLONGITUDE);
+	   longitude = 0 - convertToDegree(exifLongitude);
 	  }
 	 
 	 }
 	};
 
-	private Float convertToDegree(String stringDMS){
+	private Float convertToDegree(String degreeMinuteSecond){
 	 Float result = null;
-	 String[] DMS = stringDMS.split(",", 3);
+	 String[] DMS = degreeMinuteSecond.split(",", 3);
 
 	 String[] stringD = DMS[0].split("/", 2);
 	    Double D0 = new Double(stringD[0]);

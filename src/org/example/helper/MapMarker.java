@@ -2,14 +2,13 @@ package org.example.helper;
 
 public class MapMarker {
 	
-	//private String mLabel;
     private String image;
     private Double latitude;
     private Double longitude;
 
     public MapMarker(String image, Double latitude, Double longitude)
     {
-        //this.mLabel = label;
+
         this.latitude = latitude;
         this.longitude = longitude;
         this.image = image;
