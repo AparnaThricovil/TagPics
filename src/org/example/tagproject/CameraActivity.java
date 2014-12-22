@@ -79,9 +79,8 @@ import android.widget.ImageButton;
 	    private File            path;
 	    LocationManager locationManager;
 	    protected String fileName;
-	   // private GoogleApiClient mGoogleApiClient;
-	    //private String filePath;
 	    private String filepath;
+	    private double latitude,longitude;
 
 	    @Override
 	    public void onCreate(Bundle icicle) {
@@ -125,178 +124,7 @@ import android.widget.ImageButton;
 	         */
 	        cameraButton = (ImageButton) findViewById(R.id.cameraButton);    
 	    }
-	    
-	    /**
-	     * Get the image and save it to Google Drive.
-	     */
-	 //   private void saveFileToDrive(final String path/*,final File outputFile*/) {
-	    	
-	    /*	new AsyncTask<String, Void, Void>() {
-	    		
-	    		@Override
-				protected Void doInBackground(String... params) {
-	    			
-	              	//Log.v("GoogleDRiveActivity","saveFileToDrive1");
-	              	//Log.v("TAG", "Creating new contents.value of imahge is::::"+path);
-	              	
-	              	final Bitmap image =  BitmapFactory.decodeFile(path);
-	              	
-	             // Start by creating a new contents, and setting a callback.
-	              	
-	              	Drive.DriveApi.newDriveContents(mGoogleApiClient)
-	                .setResultCallback(new ResultCallback<DriveContentsResult>() {
-
-	                	@Override
-	                	public void onResult(DriveContentsResult result) {
-	                		
-	                		/*
-	                		 * If the operation was not successful , then we cannot
-	                		 *  proceed and hence we return
-	                		 */
-	                		
-	                		//Log.v("GoogleDRiveActivity","saveFileToDrive2");
-	                		
-	                /*		if (!result.getStatus().isSuccess()) {
-
-	                			return;
-	                		}
-	                
-	                /*
-	                 * Otherwise, we can write the data to the new contents.
-	                 * Get an output stream for the contents.
-	                 */
-	             /*   OutputStream outputStream = result.getDriveContents().getOutputStream();
-	                // Write the bitmap data from it.
-	                ByteArrayOutputStream bitmapStream = new ByteArrayOutputStream();
-	                image.compress(Bitmap.CompressFormat.PNG, 100, bitmapStream);
-	                try {
-	                	//Log.v("GoogleDRiveActivity","saveFileToDrive3");
-	                    outputStream.write(bitmapStream.toByteArray());
-	                } catch (IOException e1) {
-	                	e1.printStackTrace();
-	                    //Log.i(TAG, "Unable to write file contents.");
-	                }*/
-	                
-	                /*
-	                 *Create the initial metadata - MIME type and title.
-	                 *User will be prompted to change these later. 
-	                 * A collection of metadata changes. Any fields with 
-	                 * null values will retain their current value. 
-	                 */
-	                
-	                
-	          /*      MetadataChangeSet metadataChangeSet = new MetadataChangeSet.Builder()
-	                        .setMimeType("image/jpeg").setTitle("TagPics.png").build();
-	               
-	                // Create an intent for the file chooser, and start it.
-	               IntentSender intentSender = Drive.DriveApi
-	                        .newCreateFileActivityBuilder()
-	                        .setInitialMetadata(metadataChangeSet)
-	                        .setInitialDriveContents(result.getDriveContents())
-	                        .build(mGoogleApiClient);
-	                Log.v("GoogleDRiveActivity","saveFileToDrive4");
-	               try {
-	                    startIntentSenderForResult(
-	                            intentSender, ConstantValues.REQUEST_CODE_CREATOR, null, 0, 0, 0);
-	                    Log.v("GoogleDRiveActivity","saveFileToDrive5");
-	                } catch (SendIntentException e) {
-	                	e.printStackTrace();
-	                	// Log.i(TAG, "Failed to launch file chooser.");
-	                }
-	            }
-	        });
-	       // finish();
-			return null;
-	    }
-	   }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,filePath);
-	   camera.startPreview();
-	    } 	
-	    
-	    @Override
-	    protected void onResume() {
-	    	Log.v("GoogleDRiveActivity","onResume");
-	    	super.onResume();
-	    	if (mGoogleApiClient == null) {
-	    		/*
-	    		 * Create the API client and bind it to an instance variable.
-	             * We use this instance as the callback for connection and connection
-	             * failures. If no account name is passed, the user is prompted to choose.
-	    		 * 
-	    		 */
-
-	        /*    mGoogleApiClient = new GoogleApiClient.Builder(this)
-	                    .addApi(Drive.API)
-	                    .addScope(Drive.SCOPE_FILE)
-	                    .addConnectionCallbacks(this)
-	                    .addOnConnectionFailedListener(this)
-	                    .build();
-	    	}
-	        // Connect the client.
-	        mGoogleApiClient.connect();
-	       // camera.startPreview();
-	    } */
-
-	 /*   @Override
-	    protected void onPause() {
-	    	//Start the camera preview again
-	    	camera.startPreview();
-	    	Log.v("GoogleDRiveActivity","onPause");
-	        if (mGoogleApiClient != null) {
-	            mGoogleApiClient.disconnect();
-	            
-	        }
-	        super.onPause();
-	        
-	    }
-
-	   @Override
-	    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
-	    	
-	    	Log.v("GoogleDRiveActivity","onActivityResult");
-	    	//Start the camera preview again
-	    	camera.startPreview();
-	    } 
-	   	/*
-	   	 * If the user has not previously authorized the application, the onConnectionFailed() 
-	   	 * callback is invoked. The callback should check for the presence of a pending intent 
-	   	 * for resolving the error and start the activity. The user will be prompted to authorize 
-	   	 * the application to access their files in Drive.
-	   	 */
-	/*    @Override
-	    public void onConnectionFailed(ConnectionResult result) {
-	        // Called whenever the API client fails to connect.
-	       // Log.i(TAG, "GoogleApiClient connection failed: " + result.toString());
-	        if (!result.hasResolution()) {
-	            // show the localized error dialog.
-	            GooglePlayServicesUtil.getErrorDialog(result.getErrorCode(), this, 0).show();
-	            return;
-	        }
-	        
-	        /*
-	         *If the failure has a resolution then we need to resolve it. 
-	         *Called typically when the app is not yet authorized, and an
-	         *authorization dialog is displayed to the user.
-	         */
-	  /*      try {
-	        	Log.v("GoogleDRiveActivity","onConnectionFailed");
-	            result.startResolutionForResult(this, ConstantValues.REQUEST_CODE_RESOLUTION);
-	        } catch (SendIntentException e) {
-	            e.printStackTrace();
-	        	
-	        }
-	    }
-
-	    @Override
-	    public void onConnected(Bundle connectionHint) {
-	    	
-	    }
-
-	    @Override
-	    public void onConnectionSuspended(int cause) {
-	        //Log.i(TAG, "GoogleApiClient connection suspended");
-	    }
-	    
-
+	   
 	    /*
 	     * This method is called when the button is clicked. On click of the button,
 	     * the takePicture() is called which initiates a series of Callbacks for
@@ -505,10 +333,10 @@ import android.widget.ImageButton;
 	    	final FileOutputStream newoutStream=outputStream;
 	    	final File outputfile= outfile;
 	    	
-	    	new AsyncTask<String, Void, Void>() {
+	    	new AsyncTask<String, Void, String>() {
 
 				@Override
-				protected Void doInBackground(String... params) {
+				protected String doInBackground(String... params) {
 					//FileOutputStream newoutStream = null;
 					String filepath1 = params[0];
 					//newoutStream = params[1];
@@ -541,75 +369,103 @@ import android.widget.ImageButton;
                         Log.v("CameraActivity","value of file path is "+filepath1);    
                         Log.v("CameraActivity"," after ********value of file path is "+filepath1);
                          //startActivity(intentSaveImage);
-                         
-  		            /*
-  		     	      * Storing the latitude and longitude information in the JPEG image. 
-  		     	      * Associated with every image there is a UserComment attribute.
-  		     	      * This attribute would take the tag value when user enters tags.                               
-  		     	      */
-                      try {
-                    	  
-  						ExifInterface exif = new ExifInterface(filepath1);
-  						locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-  						Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-  						double latitude,longitude;
-  						if(location!=null){
-  						
-  						
-  						latitude = location.getLatitude();
-  						longitude = location.getLongitude();
-  						
-  						}
-  						else{
-  								Log.v("camera activity","here");
-  								latitude =37.7233;
-  			                    longitude =-122.4797;
-  			            
-  						}
-  						exif.setAttribute(ExifInterface.TAG_DATETIME, String.valueOf(System.currentTimeMillis()));
-  						
-  						//if(location.getLatitude()location.getLongitude())
-  						//Log.v("CameraActivity","latitude"+location.getLatitude());
-  						exif.setAttribute(ExifInterface.TAG_GPS_LATITUDE, decimaltoDegreeMinuteSeconds(latitude));
-  						
-  						exif.setAttribute(ExifInterface.TAG_GPS_LONGITUDE, decimaltoDegreeMinuteSeconds(longitude));
-  						
-  						if(latitude>0){
-  							exif.setAttribute(ExifInterface.TAG_GPS_LATITUDE_REF, "N");
-  						}
-  						else{
-  							exif.setAttribute(ExifInterface.TAG_GPS_LATITUDE_REF, "S");
-  						}
-  						if(longitude>0){
-  							exif.setAttribute(ExifInterface.TAG_GPS_LONGITUDE_REF, "E");
-  						}
-  						else{
-  							exif.setAttribute(ExifInterface.TAG_GPS_LONGITUDE_REF, "W");
-  						}	
-  						
-  						/*
-  						 * We need to convert the latitude and longitude to Exif GPS data format
-  						 * The format of Exif TAG_GPS_LATITUDE  is "num1/denom1,num2/denom2,num3/denom3".
-  						 */
-  						
-  						exif.setAttribute("UserComment","na");
-  						exif.saveAttributes();
-  						
-  					} catch (IOException e) {
-  						
-  						e.printStackTrace();
-  					}     
-		            
-					return null;
+                         return filepath1;
+  		            
 
 				}
+				@Override
+				protected void onPostExecute(String path){
+					String filepath1 = path;
+					 try {
+                   	  
+	  						ExifInterface exif = new ExifInterface(filepath1);
+	  						getCurrentLocation();	
+	  						exif.setAttribute(ExifInterface.TAG_DATETIME, String.valueOf(System.currentTimeMillis()));
+	  						
+	  						/*
+	  	  		     	      * Storing the latitude and longitude information in the JPEG image. 
+	  	  		     	      * Associated with every image there is a UserComment attribute.
+	  	  		     	      * This attribute would take the tag value when user enters tags.                               
+	  	  		     	      */
+	  						/*
+	  						 * We need to convert the latitude and longitude to Exif GPS data format
+	  						 * The format of Exif TAG_GPS_LATITUDE  is "num1/denom1,num2/denom2,num3/denom3".
+	  						 */
+	  						exif.setAttribute(ExifInterface.TAG_GPS_LATITUDE, decimaltoDegreeMinuteSeconds(latitude));
+	  						exif.setAttribute(ExifInterface.TAG_GPS_LONGITUDE, decimaltoDegreeMinuteSeconds(longitude));
+	  						
+	  						if(latitude>0){
+	  							exif.setAttribute(ExifInterface.TAG_GPS_LATITUDE_REF, "N");
+	  						}
+	  						else{
+	  							exif.setAttribute(ExifInterface.TAG_GPS_LATITUDE_REF, "S");
+	  						}
+	  						if(longitude>0){
+	  							exif.setAttribute(ExifInterface.TAG_GPS_LONGITUDE_REF, "E");
+	  						}
+	  						else{
+	  							exif.setAttribute(ExifInterface.TAG_GPS_LONGITUDE_REF, "W");
+	  						}	
+	  						exif.setAttribute("UserComment","na");
+	  						exif.saveAttributes();
+	  						
+	  					} catch (IOException e) {
+	  						
+	  						e.printStackTrace();
+	  					}     
+				 }
 	    			
 	    	}.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, filepath);
-	    	
-	    	//saveFileToDrive(filepath);
+	    
+	    }
+	    private void getCurrentLocation(){
+	    		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+				boolean isEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+				LocationListener locationListener = new LocationListener() {
+
+		            /**
+		             * Called when the location has changed.
+		             */
+		            public void onLocationChanged(Location location) {
+		               latitude = location.getLatitude();
+		               longitude = location.getLongitude();
+		            }
+
+		            /**
+		             * Called when the provider is disabled by the user.
+		             */
+		            public void onProviderDisabled(String provider) {
+		            }
+
+		            /**
+		             * Called when the provider is enabled by the user.
+		             */
+		            public void onProviderEnabled(String provider) {
+		            }
+		            /**
+		             * Called when the provider status changes.
+		             */
+		            public void onStatusChanged(String provider, int status, Bundle extras) {
+		            }
+		        };
+		      
+		        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+				
+					if(isEnabled){
+						
+						Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+						if (location != null) {
+							latitude = location.getLatitude();
+				            longitude = location.getLongitude();
+			                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+						}
+		                }
+					else {
+						latitude =37.7233;
+			            longitude =-122.4797;
+					}
 	    }
 	    
-	   
 	    /*
 	     * Converting the decimal value of the latitude and longitude obtained from 
 	     * GPS provider to the format that can be saved on the Exif tag
@@ -623,4 +479,6 @@ import android.widget.ImageButton;
 	    	  sOut = sOut + Integer.toString((int)coordinate) + "/1000";   // 105/1,59/1,15555/1000
 	    	  return sOut;
 	    	}
+
+	
 }
