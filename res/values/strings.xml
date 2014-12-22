@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TagPictures</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_tag">TagActivity</string>
+    <string name="title_activity_camera">CameraActivity</string>
+    <string name="home">Home</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="addimages">Add Images</string>
+    <string name="deletetag">Delete Tag</string>
+    <string name="list_view">Tag List</string>
+    <string name="map_view">Map View</string>
+    <string name="title_activity_tab">TabActivity</string>
+    <string name="title_activity_add_imageto_tags">AddImagetoTagsActivity</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_images_tag">ImagesTagActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="desc">No image Available</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="title_activity_google_drive">GoogleDriveActivity</string>
+    <string name="title_activity_all_imagesfrom_gallery">AllImagesfromGalleryActivity</string>
+    <string name="title_activity_gallery">GalleryActivity</string>
+    <string name="title_activity_list">ListActivity</string>
+    <string name="title_section1">Add Images</string>
+    <string name="title_section2">Camera</string>
+    <string name="title_section3">Tag List</string>
+    <string name="title_section4">Map View</string>
+    <string name="title_section5">Delete Tag</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="title_activity_full_screen_view">FullScreenViewActivity</string>
+
+</resources>

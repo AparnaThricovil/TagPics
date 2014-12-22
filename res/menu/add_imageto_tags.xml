@@ -1,0 +1,44 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="org.example.tagproject.AddImagetoTagsActivity" >
+    
+    <item
+        android:id="@+id/addimages"
+        android:orderInCategory="1"
+        android:title="@string/addimages"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/deletetag"
+        android:orderInCategory="2"
+        android:title="@string/deletetag"
+        app:showAsAction="always"/>
+    
+    <item
+        android:id="@+id/listview"
+        android:orderInCategory="3"
+        android:showAsAction="always"
+        android:title="@string/list_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />    
+    
+    <item
+        android:id="@+id/camera"
+        android:orderInCategory="4"
+        android:showAsAction="always"
+        android:title="@string/camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    
+     <item
+        android:id="@+id/mapview"
+        android:title="@string/map_view"
+        android:orderInCategory="5"
+        android:showAsAction="always"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+</menu>
