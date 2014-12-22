@@ -28,6 +28,8 @@ import android.widget.ImageView;
 import org.example.helper.DatabaseAccess;
 import org.example.helper.GridViewAdapter;
 import org.example.helper.ImageItem;
+import org.example.helper.ImageResultListener;
+import org.example.helper.ImageService;
 //import org.example.helper.MyRecyclerAdapter;
 //import org.example.tagproject.AddImagetoTagsActivity.ImageServiceConnection;
 import org.json.JSONArray;

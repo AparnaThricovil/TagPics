@@ -1,7 +1,14 @@
 /*
  * Code for implementation of camera functionality taken from
  *  Professor Arno Puder's Camera Tutorial 
-*/
+ */
+/*
+ * CameraActivity is my project's Main activity. When user takes
+ *  a picture, the corresponding image would be stored in a folder
+ *  TagPics inside gallery and the location  of the user is added
+ *  to the exif data of the image and the tag for the image is
+ *  set to "na"
+ */
 package org.example.tagproject;
 
 import java.io.ByteArrayOutputStream;
@@ -329,7 +336,7 @@ import android.widget.ImageButton;
 	     * takes care of adding values to the exif tags.
 	     */
 	    public void rotateandSaveExif(String filepath, FileOutputStream outputStream, File outfile){
-	    	//saveFileToDrive(filepath/*,outfile*/);
+	    	
 	    	final FileOutputStream newoutStream=outputStream;
 	    	final File outputfile= outfile;
 	    	
@@ -337,19 +344,17 @@ import android.widget.ImageButton;
 
 				@Override
 				protected String doInBackground(String... params) {
-					//FileOutputStream newoutStream = null;
+					
 					String filepath1 = params[0];
-					//newoutStream = params[1];
 					Bitmap myBitmap = BitmapFactory.decodeFile(filepath1);
-					//Log.v("CameraActivity","before----->value of file path is "+filepath1);
+					
 					   Matrix matrix = new Matrix();
 					   matrix.postRotate(90);
 					   Bitmap rotatedbitmap = Bitmap.createBitmap(myBitmap,0,0,myBitmap.getWidth(),myBitmap.getHeight(),matrix,true);
 					   ByteArrayOutputStream stream = new ByteArrayOutputStream();
 					   rotatedbitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
 					   byte[] byteArray = stream.toByteArray();
-					   //refreshGallery(outFile);
-		      
+					   
 					   try {
 						   Log.v("in try","trying to rotate and save image");
 						   newoutStream.write(byteArray);
@@ -365,10 +370,6 @@ import android.widget.ImageButton;
 					   	Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
   		                intent.setData(Uri.fromFile(outputfile));
   		            	sendBroadcast(intent);
-  		            	
-                        Log.v("CameraActivity","value of file path is "+filepath1);    
-                        Log.v("CameraActivity"," after ********value of file path is "+filepath1);
-                         //startActivity(intentSaveImage);
                          return filepath1;
   		            
 
@@ -418,6 +419,9 @@ import android.widget.ImageButton;
 	    	}.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, filepath);
 	    
 	    }
+	    /*
+	     * Getting location information using GPS_PROVIDER
+	     */
 	    private void getCurrentLocation(){
 	    		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 				boolean isEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
@@ -459,7 +463,12 @@ import android.widget.ImageButton;
 				            longitude = location.getLongitude();
 			                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 						}
-		                }
+		            }
+					/*
+					 * If user's current location or previous location is 
+					 * not obtained then the location is set to San Francisco 
+					 * State University
+					 */
 					else {
 						latitude =37.7233;
 			            longitude =-122.4797;

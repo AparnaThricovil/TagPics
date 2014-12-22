@@ -3,17 +3,22 @@ package org.example.tagproject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import org.example.helper.DatabaseAccess;
 //import org.example.helper.GridViewAdapter;
 import org.example.helper.ImageItem;
+import org.example.helper.ImageResultListener;
+import org.example.helper.ImageService;
 //import org.example.helper.MapActivityHelper;
 import org.example.helper.MapMarker;
+
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
 import android.media.ExifInterface;
 import android.os.Bundle;
 import android.os.IBinder;

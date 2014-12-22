@@ -83,7 +83,7 @@
             android:uiOptions="splitActionBarWhenNarrow" >
         </activity>
 
-        <service android:name=".ImageService" />
+        <service android:name="org.example.helper.ImageService" />
 
         <activity
             android:name=".MainActivity"
